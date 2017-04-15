@@ -696,7 +696,6 @@
         },
 		"IPAMConfig": {
 		  "type": "object",
-		  "title": "ContainerNetworkIPAMConfig",
 		  "properties": {
 			"IPv4Address": {
 			  "type": "string"
@@ -1447,7 +1446,10 @@
         },
         "Gateway": {
           "type": "string"
-        }
+        },
+		"IPv4Address": {
+		  "type": "string"
+		}
       }
     },
     "NetworkContainer": {

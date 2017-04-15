@@ -7,11 +7,11 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class IPAMConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class ContainerNetworkIPAMConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Docker\\API\\Model\\IPAMConfig') {
+        if ($type !== 'Docker\\API\\Model\\ContainerNetworkIPAMConfig') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Docker\API\Model\IPAMConfig) {
+        if ($data instanceof \Docker\API\Model\ContainerNetworkIPAMConfig) {
             return true;
         }
 
@@ -32,18 +32,9 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Docker\API\Model\IPAMConfig();
+        $object = new \Docker\API\Model\ContainerNetworkIPAMConfig();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
-        }
-        if (property_exists($data, 'Subnet')) {
-            $object->setSubnet($data->{'Subnet'});
-        }
-        if (property_exists($data, 'IPRange')) {
-            $object->setIPRange($data->{'IPRange'});
-        }
-        if (property_exists($data, 'Gateway')) {
-            $object->setGateway($data->{'Gateway'});
         }
         if (property_exists($data, 'IPv4Address')) {
             $object->setIPv4Address($data->{'IPv4Address'});
@@ -55,15 +46,6 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getSubnet()) {
-            $data->{'Subnet'} = $object->getSubnet();
-        }
-        if (null !== $object->getIPRange()) {
-            $data->{'IPRange'} = $object->getIPRange();
-        }
-        if (null !== $object->getGateway()) {
-            $data->{'Gateway'} = $object->getGateway();
-        }
         if (null !== $object->getIPv4Address()) {
             $data->{'IPv4Address'} = $object->getIPv4Address();
         }
