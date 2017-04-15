@@ -2,7 +2,7 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Reference\Reference;
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
@@ -29,9 +29,6 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (empty($data)) {
-            return null;
-        }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
@@ -66,6 +63,9 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'MacAddress')) {
             $object->setMacAddress($data->{'MacAddress'});
         }
+        if (property_exists($data, 'IPAMConfig')) {
+            $object->setIPAMConfig($this->serializer->deserialize($data->{'IPAMConfig'}, 'Docker\\API\\Model\\IPAMConfig', 'raw', $context));
+        }
 
         return $object;
     }
@@ -99,6 +99,9 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         }
         if (null !== $object->getMacAddress()) {
             $data->{'MacAddress'} = $object->getMacAddress();
+        }
+        if (null !== $object->getIPAMConfig()) {
+            $data->{'IPAMConfig'} = $this->serializer->serialize($object->getIPAMConfig(), 'raw', $context);
         }
 
         return $data;

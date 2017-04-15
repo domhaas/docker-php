@@ -693,7 +693,15 @@
         },
         "MacAddress": {
           "type": "string"
-        }
+        },
+		"IPAMConfig": {
+		  "type": "object",
+		  "properties": {
+			"IPv4Address": {
+			  "type": "string"
+			}
+		  }
+		}
       }
     },
     "ContainerState": {

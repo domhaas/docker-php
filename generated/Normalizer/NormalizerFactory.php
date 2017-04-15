@@ -2,16 +2,13 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Normalizer\NormalizerArray;
-use Joli\Jane\Normalizer\ReferenceNormalizer;
-
 class NormalizerFactory
 {
     public static function create()
     {
         $normalizers   = [];
-        $normalizers[] = new ReferenceNormalizer();
-        $normalizers[] = new NormalizerArray();
+        $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ReferenceNormalizer();
+        $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new PortNormalizer();
         $normalizers[] = new MountNormalizer();
@@ -30,6 +27,7 @@ class NormalizerFactory
         $normalizers[] = new EndpointIPAMConfigNormalizer();
         $normalizers[] = new NetworkConfigNormalizer();
         $normalizers[] = new ContainerNetworkNormalizer();
+        $normalizers[] = new IPAMConfigNormalizer();
         $normalizers[] = new ContainerStateNormalizer();
         $normalizers[] = new ContainerNormalizer();
         $normalizers[] = new ContainerTopNormalizer();
