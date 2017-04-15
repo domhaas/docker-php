@@ -27,7 +27,6 @@ class NormalizerFactory
         $normalizers[] = new EndpointIPAMConfigNormalizer();
         $normalizers[] = new NetworkConfigNormalizer();
         $normalizers[] = new ContainerNetworkNormalizer();
-        $normalizers[] = new IPAMConfigNormalizer();
         $normalizers[] = new ContainerStateNormalizer();
         $normalizers[] = new ContainerNormalizer();
         $normalizers[] = new ContainerTopNormalizer();

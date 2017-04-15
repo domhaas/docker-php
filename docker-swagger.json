@@ -693,25 +693,7 @@
         },
         "MacAddress": {
           "type": "string"
-        },
-		
-		"IPAMConfig": {
-		  "type": "object",
-		  "properties": {
-			"Subnet": {
-			  "type": "string"
-			},
-			"IPRange": {
-			  "type": "string"
-			},
-			"Gateway": {
-			  "type": "string"
-			},
-			"IPv4Address": {
-			  "type": "string"
-			}
-		  }
-		}
+        }
       }
     },
     "ContainerState": {
@@ -1456,10 +1438,7 @@
         },
         "Gateway": {
           "type": "string"
-        },
-		"IPv4Address": {
-		  "type": "string"
-		}
+        }
       }
     },
     "NetworkContainer": {

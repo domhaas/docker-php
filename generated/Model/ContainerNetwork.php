@@ -40,10 +40,6 @@ class ContainerNetwork
      * @var string
      */
     protected $macAddress;
-    /**
-     * @var IPAMConfig
-     */
-    protected $iPAMConfig;
 
     /**
      * @return string
@@ -221,26 +217,6 @@ class ContainerNetwork
     public function setMacAddress($macAddress = null)
     {
         $this->macAddress = $macAddress;
-
-        return $this;
-    }
-
-    /**
-     * @return IPAMConfig
-     */
-    public function getIPAMConfig()
-    {
-        return $this->iPAMConfig;
-    }
-
-    /**
-     * @param IPAMConfig $iPAMConfig
-     *
-     * @return self
-     */
-    public function setIPAMConfig(IPAMConfig $iPAMConfig = null)
-    {
-        $this->iPAMConfig = $iPAMConfig;
 
         return $this;
     }

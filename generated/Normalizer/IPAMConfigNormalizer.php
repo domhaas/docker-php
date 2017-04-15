@@ -45,9 +45,6 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'Gateway')) {
             $object->setGateway($data->{'Gateway'});
         }
-        if (property_exists($data, 'IPv4Address')) {
-            $object->setIPv4Address($data->{'IPv4Address'});
-        }
 
         return $object;
     }
@@ -63,9 +60,6 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         if (null !== $object->getGateway()) {
             $data->{'Gateway'} = $object->getGateway();
-        }
-        if (null !== $object->getIPv4Address()) {
-            $data->{'IPv4Address'} = $object->getIPv4Address();
         }
 
         return $data;

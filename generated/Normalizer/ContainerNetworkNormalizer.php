@@ -63,9 +63,6 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'MacAddress')) {
             $object->setMacAddress($data->{'MacAddress'});
         }
-        if (property_exists($data, 'IPAMConfig')) {
-            $object->setIPAMConfig($this->serializer->deserialize($data->{'IPAMConfig'}, 'Docker\\API\\Model\\IPAMConfig', 'raw', $context));
-        }
 
         return $object;
     }
@@ -99,9 +96,6 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         }
         if (null !== $object->getMacAddress()) {
             $data->{'MacAddress'} = $object->getMacAddress();
-        }
-        if (null !== $object->getIPAMConfig()) {
-            $data->{'IPAMConfig'} = $this->serializer->serialize($object->getIPAMConfig(), 'raw', $context);
         }
 
         return $data;
